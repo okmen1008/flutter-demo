@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'todo.dart';
+import 'package:project1/data_util/sharedpreferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:project1/data_util/account.dart';
 import '../drawer.dart';
 
 class Profile extends StatefulWidget {
@@ -9,15 +12,29 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
-  bool drawerClick = false;
   static const TextStyle optionStyle = TextStyle(fontSize: 13, color: Color(0xff243b6b));
   static const TextStyle optionStyle2 = TextStyle(fontSize: 12, color: Color(0xff243b6b));
   bool _click = false, _click1 = false, _click2 = false, _click3 = false;
 
+  SharedPreferences localStorage;
+  var nameController = TextEditingController();
+  List<Account> _listAccount = [];
+
+
   @override
   void initState() {
-    // TODO: implement initState
+    PreferencesUtil.getListAccount("listAccount", (result) {
+      setState(() {
+        _listAccount = result;
+      });
+    });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
   }
 
   @override

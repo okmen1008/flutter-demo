@@ -158,6 +158,7 @@ class _LogInStatefullState extends State<LogInStatefull> {
                               var item = _listAccount[i];
                               if (acc.email == item.email && acc.password == item.password) {
                                 Navigator.pushNamed(context, '/base');
+                                msg = '';
                                 break;
                               } else {
                                 msg = 'Sai email hoac mat khau';

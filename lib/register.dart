@@ -22,6 +22,7 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
   final email = GlobalKey<FormState>();
   final password = GlobalKey<FormState>();
   final confirm_password = GlobalKey<FormState>();
+  String msg = '';
 
   final emailController = TextEditingController();
   final passController = TextEditingController();
@@ -177,6 +178,7 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
                           acc = new Account();
                           acc.email = emailController.value.text;
                           acc.password = passController.value.text;
+                          acc.name = 'Name dafault';
                           print(lstAccount);
                           for (var i = 0; i < lstAccount.length; i++) {
                             if (acc.email == lstAccount[i].email) {
@@ -191,6 +193,11 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
                               context,
                               MaterialPageRoute(builder: (context) => LogIn()),
                             );
+                          }
+                          else {
+                            setState(() {
+                              msg = 'email da ton tai';
+                            });
                           }
                         }
                       },
@@ -222,6 +229,15 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
                             color: Colors.blue,
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      '$msg',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.red,
                       ),
                     ),
                   ),

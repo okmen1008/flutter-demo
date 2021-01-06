@@ -86,8 +86,8 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
                   ),
                   Container(
                     color: Colors.white,
-                    width: 311,
-                    height: 51,
+                    // width: 311,
+                    // height: 51,
                     child: Form(
                       key: email,
                       child: TextFormField(
@@ -113,8 +113,8 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
                   ),
                   Container(
                     color: Colors.white,
-                    width: 311,
-                    height: 51,
+                    // width: 311,
+                    // height: 51,
                     child: Center(
                       child: Form(
                         key: password,
@@ -143,8 +143,8 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
                   ),
                   Container(
                     color: Colors.white,
-                    width: 311,
-                    height: 51,
+                    // width: 311,
+                    // height: 51,
                     child: Center(
                       child: Form(
                         key: confirm_password,
@@ -165,49 +165,46 @@ class _RegisterStatefullState extends State<RegisterStatefull> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20),
-                    width: 311,
-                    height: 51,
-                    child: RaisedButton(
-                      onPressed: () {
-                        bool check = true;
-                        Account acc;
-                        print(emailController.value);
-                        if (email.currentState.validate() && password.currentState.validate()) {
-                          acc = new Account();
-                          acc.email = emailController.value.text;
-                          acc.password = passController.value.text;
-                          acc.name = 'Name dafault';
-                          print(lstAccount);
-                          for (var i = 0; i < lstAccount.length; i++) {
-                            if (acc.email == lstAccount[i].email) {
-                              check = false;
-                              break;
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 20),
+                      child: RaisedButton(
+                        onPressed: () {
+                          bool check = true;
+                          Account acc;
+                          print(emailController.value);
+                          if (email.currentState.validate() && password.currentState.validate()) {
+                            acc = new Account();
+                            acc.email = emailController.value.text;
+                            acc.password = passController.value.text;
+                            acc.name = 'Name dafault';
+                            print(lstAccount);
+                            for (var i = 0; i < lstAccount.length; i++) {
+                              if (acc.email == lstAccount[i].email) {
+                                check = false;
+                                break;
+                              }
+                            }
+                            if (check) {
+                              lstAccount.add(acc);
+                              PreferencesUtil().setListAccount("listAccount", lstAccount);
+                              Navigator.pushNamed(context,'/login');
+                            }
+                            else {
+                              setState(() {
+                                msg = 'email da ton tai';
+                              });
                             }
                           }
-                          if (check) {
-                            lstAccount.add(acc);
-                            PreferencesUtil().setListAccount("listAccount", lstAccount);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => LogIn()),
-                            );
-                          }
-                          else {
-                            setState(() {
-                              msg = 'email da ton tai';
-                            });
-                          }
-                        }
-                      },
-                      color: Colors.blue,
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          color: Colors.white,
+                        },
+                        color: Colors.blue,
+                        child: Text(
+                          'Register',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),

@@ -59,7 +59,7 @@ Drawer drawerr(BuildContext context) {
           ),
           title: Text('Logout'),
           onTap: () {
-            Navigator.pushNamed(context, '/login');
+            Navigator.pushReplacementNamed(context, '/login');
           },
         ),
       ],

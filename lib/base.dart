@@ -111,7 +111,7 @@ class _BaseState extends State<Base> {
           child: FittedBox(
             child: FloatingActionButton(
               onPressed: (){
-                Navigator.pushNamed(context, '/newtask');
+                Navigator.pushReplacementNamed(context, '/newtask');
               },
               child: Icon(Icons.add, color: Colors.white,),
               // elevation: 5.0,

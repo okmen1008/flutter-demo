@@ -211,7 +211,7 @@ class _NewTaskState extends State<NewTask> {
           setState(() {
             if(_task.currentState.validate()) {
               addToList(myController.value.text);
-              Navigator.pushNamed(context, '/base');
+              Navigator.pushReplacementNamed(context, '/base');
             }
           });
         },

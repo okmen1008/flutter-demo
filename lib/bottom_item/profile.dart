@@ -95,7 +95,7 @@ class _ProfileState extends State<Profile> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Tiffany Schneider',
+                              'Nguyen Duc Thang',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 24,
